@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class ProblemSet12 {
     public static void main(String[] args) {
-        int rows = 0;
-        //int end = 16;
+        int base = 5;
+        int exponent = 3;
      /*   ArrayList<Integer> numbers = new ArrayList<Integer>();
 
         numbers.add(1);
@@ -17,7 +17,7 @@ public class ProblemSet12 {
         inner.add(2);
         inner.add(4);
 */
-        System.out.println(triangle(rows));
+        System.out.println(powerN(base, exponent));
         //(Arrays.toString(
     }
 
@@ -57,13 +57,29 @@ public class ProblemSet12 {
     }
 
     public static long sumDigits(int n) {
+    if(n < 0){return -1;}
+    ArrayList<Long> digits = new ArrayList<Long>();
+    long number = n;
+    while(number > 0){
+    digits.add(number%10);
+    number /= 10; }
 
+    int sum = 0;
+    for(int i = 0; i < digits.size(); i++){
+    sum += digits.get(i);}
+
+    return sum;}
+
+    public static long powerN(int base, int exponent) {
+    if(base < 1 || exponent < 1){return -1;}
+    long product = 1;
+    while(exponent > 0){
+    product *= base;
+    exponent--;
+    }
+    return product;
     }
 /*
-    public static long powerN(int base, int exponent) {
-
-    }
-
     public static String changeXY(String text) {
 
     }
