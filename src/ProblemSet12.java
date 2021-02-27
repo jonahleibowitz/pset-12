@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class ProblemSet12 {
     public static void main(String[] args) {
-        int base = 5;
+        int n = 3;
         int exponent = 3;
      /*   ArrayList<Integer> numbers = new ArrayList<Integer>();
 
@@ -17,19 +17,14 @@ public class ProblemSet12 {
         inner.add(2);
         inner.add(4);
 */
-        System.out.println(powerN(base, exponent));
+        System.out.println(factorial(n));
         //(Arrays.toString(
     }
 
     public static long factorial(int n) {
     if (n <= 0){return -1;}
-    long product = 1;
-    long factCount = n;
-    while(factCount > 0){
-      product *= factCount;
-      factCount --;
-    }
-    return product;
+    if (n <= 1) {return 1;}
+        return n * factorial(n - 1);
     }
 
     public static long fibonacci(int n) {
