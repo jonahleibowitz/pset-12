@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class ProblemSet12 {
     public static void main(String[] args) {
-        int n = 7;
+        int rows = 0;
         //int end = 16;
      /*   ArrayList<Integer> numbers = new ArrayList<Integer>();
 
@@ -17,7 +17,7 @@ public class ProblemSet12 {
         inner.add(2);
         inner.add(4);
 */
-        System.out.println(fibonacci(n));
+        System.out.println(triangle(rows));
         //(Arrays.toString(
     }
 
@@ -40,19 +40,26 @@ public class ProblemSet12 {
 
     while(fib.size() < n){
      long next = fib.get(fib.size()-1) + fib.get(fib.size()-2);
-     fib.add(next); }
+     fib.add(next);}
 
     return fib.get(fib.size()-1);
     }
-/*
-    public static long triangle(int rows) {
 
+    public static long triangle(int rows) {
+        if (rows < 0){return -1;}
+        long sum = 0;
+        long triCount = rows;
+        while(triCount > 0){
+            sum += triCount;
+            triCount --;
+        }
+        return sum;
     }
 
     public static long sumDigits(int n) {
 
     }
-
+/*
     public static long powerN(int base, int exponent) {
 
     }
