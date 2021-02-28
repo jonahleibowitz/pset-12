@@ -2,22 +2,10 @@ import java.util.ArrayList;
 
 public class ProblemSet12 {
     public static void main(String[] args) {
-        int n = 3;
-        int exponent = 3;
-     /*   ArrayList<Integer> numbers = new ArrayList<Integer>();
+        int base = 3;
+        int exponent = 0;
 
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(7);
-        numbers.add(2);
-        numbers.add(1);
-        numbers.add(7);
-
-        ArrayList<Integer> inner = new ArrayList<Integer>();
-        inner.add(2);
-        inner.add(4);
-*/
-        System.out.println(factorial(n));
+        System.out.println(powerN(base, exponent));
         //(Arrays.toString(
     }
 
@@ -30,49 +18,29 @@ public class ProblemSet12 {
     public static long fibonacci(int n) {
     if (n < 0){return -1;}
     if(n == 0){return 0;}
-    ArrayList<Long> fib = new ArrayList<Long>();
-    fib.add(0L); fib.add(1L);
+    if(n == 1 || n == 2){return 1;}
 
-    while(fib.size() < n){
-     long next = fib.get(fib.size()-1) + fib.get(fib.size()-2);
-     fib.add(next);}
-
-    return fib.get(fib.size()-1);
+    return fibonacci(n-1) + fibonacci(n-2);
     }
 
     public static long triangle(int rows) {
         if (rows < 0){return -1;}
-        long sum = 0;
-        long triCount = rows;
-        while(triCount > 0){
-            sum += triCount;
-            triCount --;
-        }
-        return sum;
+        if (rows == 1){return 1;}
+
+        return rows + triangle(rows-1);
     }
 
     public static long sumDigits(int n) {
     if(n < 0){return -1;}
-    ArrayList<Long> digits = new ArrayList<Long>();
-    long number = n;
-    while(number > 0){
-    digits.add(number%10);
-    number /= 10; }
-
-    int sum = 0;
-    for(int i = 0; i < digits.size(); i++){
-    sum += digits.get(i);}
-
-    return sum;}
+    if(n == 0){return 0;}
+    return  n%10 + sumDigits(n/10);
+    }
 
     public static long powerN(int base, int exponent) {
     if(base < 1 || exponent < 1){return -1;}
-    long product = 1;
-    while(exponent > 0){
-    product *= base;
-    exponent--;
-    }
-    return product;
+    if(exponent == 1){return base;}
+
+    return base * powerN(base,exponent-1);
     }
 /*
     public static String changeXY(String text) {
