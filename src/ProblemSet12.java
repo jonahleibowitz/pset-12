@@ -2,10 +2,9 @@ import java.util.ArrayList;
 
 public class ProblemSet12 {
     public static void main(String[] args) {
-        int[] data = {2, 11, 2, 2, 11,11, 5};
-        int index = 0;
+        String text = "xhixhix";
 
-        System.out.println(array11(data, index));
+        System.out.println(changeXY(text));
         //(Arrays.toString(
     }
 
@@ -42,25 +41,23 @@ public class ProblemSet12 {
 
     return base * powerN(base,exponent-1);
     }
-/*
+
     public static String changeXY(String text) {
     if(text == null){return null;}
-    }*/
+    if (text.length() == 0) {return text;}
+    char replace;
+        if(text.charAt(0) == 'x'){ replace = 'y'; }
+        else{ replace = text.charAt(0); }
 
-    public static int array11(int[] data, int index) {
-     if(data == null || index < 0 || index > data.length){return -1;}
-     if(index > data.length-1){return 0;}
-
-     int count = 0;
-    if(data[index] == 11){count++;}
-
-     return count + array11(data, index+1);
-    }
-
-    public static int strCount(String text, String sub) {
-
+        return replace + changeXY(text.substring(1));
     }
 /*
+    public static int strCount(String text, String sub) {
+        if (text == null || sub == null) {return -1;}
+        if (sub.length() <= 0 ) {return -1;}
+
+    }
+
     public static boolean strCopies(String text, String sub, int n) {
 
     }
