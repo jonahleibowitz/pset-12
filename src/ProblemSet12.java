@@ -2,9 +2,10 @@ import java.util.ArrayList;
 
 public class ProblemSet12 {
     public static void main(String[] args) {
-        String text = "xhixhix";
+        int[] data = {11, 2, 3, 11};
+        int index = 0;
 
-        System.out.println(changeXY(text));
+        System.out.println(array11(data, index));
         //(Arrays.toString(
     }
 
@@ -51,7 +52,18 @@ public class ProblemSet12 {
 
         return replace + changeXY(text.substring(1));
     }
-/*
+
+    public static int array11(int[] data, int index) {
+        if(data == null || index < 0 || index > data.length){return -1;}
+        if(index > data.length-1){return 0;}
+
+        int count = 0;
+        if(data[index] == 11){count++;}
+
+        return count + array11(data, index+1);
+    }
+
+    /*
     public static int strCount(String text, String sub) {
         if (text == null || sub == null) {return -1;}
         if (sub.length() <= 0 ) {return -1;}
