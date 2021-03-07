@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class ProblemSet12 {
     public static void main(String[] args) {
-        int[] data = {11, 2, 3, 11};
-        int index = 0;
+        String text = "calcalcowcalc";
+        String sub = "";
 
-        System.out.println(array11(data, index));
+        System.out.println(strCount(text, sub));
         //(Arrays.toString(
     }
 
@@ -63,13 +63,22 @@ public class ProblemSet12 {
         return count + array11(data, index+1);
     }
 
-    /*
     public static int strCount(String text, String sub) {
-        if (text == null || sub == null) {return -1;}
-        if (sub.length() <= 0 ) {return -1;}
+        if (text == null || sub == null || sub.length() <= 0) {return -1;}
+        if(text.length() < sub.length()){return 0;}
+
+        int count = 0;
+        if(text.substring(0,sub.length()).equals(sub)){
+            count++;
+            return count + strCount(text.substring(sub.length()), sub);
+        } else{
+            return count + strCount(text.substring(1), sub);
+        }
+
+
 
     }
-
+/*
     public static boolean strCopies(String text, String sub, int n) {
 
     }
