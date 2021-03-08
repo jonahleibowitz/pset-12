@@ -1,21 +1,14 @@
 import java.util.ArrayList;
 
 public class ProblemSet12 {
-    public static void main(String[] args) {
-        String text = "cccatcowcatxx";
-        String sub = "cat";
 
-        System.out.println(strDist(text, sub));
-        //(Arrays.toString(
-    }
-
-    public static long factorial(int n) {
+    public long factorial(int n) {
     if (n <= 0){return -1;}
     if (n <= 1) {return 1;}
         return n * factorial(n - 1);
     }
 
-    public static long fibonacci(int n) {
+    public long fibonacci(int n) {
     if (n < 0){return -1;}
     if(n == 0){return 0;}
     if(n == 1 || n == 2){return 1;}
@@ -23,27 +16,27 @@ public class ProblemSet12 {
     return fibonacci(n-1) + fibonacci(n-2);
     }
 
-    public static long triangle(int rows) {
+    public long triangle(int rows) {
         if (rows < 0){return -1;}
         if (rows == 1){return 1;}
 
         return rows + triangle(rows-1);
     }
 
-    public static long sumDigits(int n) {
+    public long sumDigits(int n) {
     if(n < 0){return -1;}
     if(n == 0){return 0;}
     return  n%10 + sumDigits(n/10);
     }
 
-    public static long powerN(int base, int exponent) {
+    public long powerN(int base, int exponent) {
     if(base < 1 || exponent < 1){return -1;}
     if(exponent == 1){return base;}
 
     return base * powerN(base,exponent-1);
     }
 
-    public static String changeXY(String text) {
+    public String changeXY(String text) {
     if(text == null){return null;}
     if (text.length() == 0) {return text;}
     char replace;
@@ -53,7 +46,7 @@ public class ProblemSet12 {
         return replace + changeXY(text.substring(1));
     }
 
-    public static int array11(int[] data, int index) {
+    public int array11(int[] data, int index) {
         if(data == null || index < 0 || index > data.length){return -1;}
         if(index > data.length-1){return 0;}
 
@@ -63,7 +56,7 @@ public class ProblemSet12 {
         return count + array11(data, index+1);
     }
 
-    public static int strCount(String text, String sub) {
+    public int strCount(String text, String sub) {
         if (text == null || sub == null || sub.length() <= 0) {return -1;}
         if(text.length() < sub.length()){return 0;}
 
@@ -76,7 +69,7 @@ public class ProblemSet12 {
         }
     }
 
-    public static boolean strCopies(String text, String sub, int n) {//is it right?
+    public boolean strCopies(String text, String sub, int n) {//is it right?
         if (text == null || sub == null || sub.length() <= 0 || n < 0) {return false;}
         if(text.length() < sub.length()){return false;}
 
@@ -88,46 +81,14 @@ public class ProblemSet12 {
 
     }
 
-    public static int strDist(String text, String sub) {
-        if (text == null || sub == null || sub.length() <= 0) {return -1;}
+    public int strDist(String text, String sub) {
+            if(text == null || sub == null || sub.equals("")){ return -1; }
+            return meanwhile(text, sub, 0) - text.indexOf(sub) + sub.length() - 1;
 
-
-        int start = text.indexOf(sub);
-        int count = 0;
-        if(text.length() < sub.length()){return 0;}
-        if(text.substring(0) != sub.substring(0) || ){
-            count = 0;
-            return count + strDist(text.substring(1), sub);
         }
-/*
-
-
-
-        if(text.substring(0,sub.length()).equals(sub)){
-            count += sub.length();
-            return count + strCount(text.substring(sub.length()), sub);
-        }else{*/
-
-
-    return count + strDist(text.substring(1), sub);}
-
-
-    /*Plan:
-    * Put checks in
-    * FIRST
-    * int start variable:
-    * int end variable:
-    *
-    * RECURSION
-    * If a character is either part of or between the first and last instances, count++
-    *if statement:
-    *
-    *
-    * Return count + function(new substring)
-    * */
-
-    }
-    private static boolean meanwhile(int check){
-    
+    private int meanwhile(String text, String sub, int index){
+        int newIndex = text.indexOf(sub, index);
+        if(newIndex >= 0){ return meanwhile(text, sub, newIndex+1); }
+        return index;
     }
 }
