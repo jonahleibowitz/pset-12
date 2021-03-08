@@ -2,11 +2,10 @@ import java.util.ArrayList;
 
 public class ProblemSet12 {
     public static void main(String[] args) {
-        String text = "cococnod";
-        String sub = "cococ";
-        int n = 1;
+        String text = "cccatcowcatxx";
+        String sub = "cat";
 
-        System.out.println(strCopies(text, sub, n));
+        System.out.println(strDist(text, sub));
         //(Arrays.toString(
     }
 
@@ -88,8 +87,47 @@ public class ProblemSet12 {
         return (count + strCount(text.substring(1), sub)) >= n;
 
     }
-/*
-    public static int strDist(String text, String sub) {
 
-    }*/
+    public static int strDist(String text, String sub) {
+        if (text == null || sub == null || sub.length() <= 0) {return -1;}
+
+
+        int start = text.indexOf(sub);
+        int count = 0;
+        if(text.length() < sub.length()){return 0;}
+        if(text.substring(0) != sub.substring(0) || ){
+            count = 0;
+            return count + strDist(text.substring(1), sub);
+        }
+/*
+
+
+
+        if(text.substring(0,sub.length()).equals(sub)){
+            count += sub.length();
+            return count + strCount(text.substring(sub.length()), sub);
+        }else{*/
+
+
+    return count + strDist(text.substring(1), sub);}
+
+
+    /*Plan:
+    * Put checks in
+    * FIRST
+    * int start variable:
+    * int end variable:
+    *
+    * RECURSION
+    * If a character is either part of or between the first and last instances, count++
+    *if statement:
+    *
+    *
+    * Return count + function(new substring)
+    * */
+
+    }
+    private static boolean meanwhile(int check){
+    
+    }
 }
